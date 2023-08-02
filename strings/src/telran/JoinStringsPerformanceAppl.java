@@ -23,7 +23,6 @@ public class JoinStringsPerformanceAppl {
 		test3.run();
 	}
 	
-	
 	private static String[] getBigArray() {
 		String[] res = new String[N_STRINGS];
 		Arrays.fill(res, "hello");
