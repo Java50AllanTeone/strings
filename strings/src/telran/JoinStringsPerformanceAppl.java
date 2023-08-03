@@ -1,7 +1,6 @@
 package telran;
 
 import java.util.Arrays;
-
 import telran.performance.JoinStringsPerformanceTest;
 import telran.text.JoinStringsOnBuilder;
 import telran.text.JoinStringsOnStandard;

@@ -1,7 +1,6 @@
 package telran.text;
 
 public class JoinStringsOnStandard implements JoinStrings {
-
 	@Override
 	public String join(String[] strings, String delimiter) {
 		if (strings != null && strings.length > 0) {
@@ -9,5 +8,4 @@ public class JoinStringsOnStandard implements JoinStrings {
 		}
 		return "";
 	}
-
 }

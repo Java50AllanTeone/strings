@@ -1,7 +1,6 @@
 package telran.text;
 
 public class JoinStringsOnBuilder implements JoinStrings {
-
 	@Override
 	public String join(String[] strings, String delimiter) {
 		String res = "";
@@ -16,5 +15,4 @@ public class JoinStringsOnBuilder implements JoinStrings {
 		}
 		return res;
 	}
-
 }

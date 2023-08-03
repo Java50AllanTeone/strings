@@ -16,14 +16,8 @@ public abstract class PerformanceTest {
 		
 		for (int i = 0; i < nRuns; i++) {
 			runTest();
-		}
-		
+		}	
 		var dif = System.currentTimeMillis() - cur;
-		System.out.println("runs: " + nRuns + " test name " + testName + " time " + dif);	
+		System.out.printf("%s: %ds, %d runs\n", testName, dif, nRuns);
 	}
-	
-	
-	
-	
-
 }
