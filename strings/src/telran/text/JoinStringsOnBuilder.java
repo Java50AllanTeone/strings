@@ -14,5 +14,6 @@ public class JoinStringsOnBuilder implements JoinStrings {
 			res = builder.toString();
 		}
 		return res;
+		
 	}
 }

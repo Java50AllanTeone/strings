@@ -19,5 +19,6 @@ public abstract class PerformanceTest {
 		}	
 		var dif = System.currentTimeMillis() - cur;
 		System.out.printf("%s: %ds, %d runs\n", testName, dif, nRuns);
+		
 	}
 }

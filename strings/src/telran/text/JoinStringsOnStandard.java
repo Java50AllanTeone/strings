@@ -7,5 +7,6 @@ public class JoinStringsOnStandard implements JoinStrings {
 			return String.join(delimiter, strings);
 		}
 		return "";
+		
 	}
 }

@@ -15,5 +15,6 @@ public class JoinStringsPerformanceTest extends PerformanceTest {
 	@Override
 	protected void runTest() {
 		joinStrings.join(this.strings, " ");
+		
 	}
 }

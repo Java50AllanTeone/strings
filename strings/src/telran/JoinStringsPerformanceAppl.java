@@ -26,5 +26,6 @@ public class JoinStringsPerformanceAppl {
 		String[] res = new String[N_STRINGS];
 		Arrays.fill(res, "hello");
 		return res;
+		
 	}
 }
