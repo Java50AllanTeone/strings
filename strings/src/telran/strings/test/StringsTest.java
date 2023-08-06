@@ -67,7 +67,9 @@ class StringsTest {
 		assertTrue("249".matches(regex));
 		assertTrue("250".matches(regex));
 		assertTrue("255".matches(regex));
+		assertTrue("99".matches(regex));
 	}
+
 	@Test
 	void ipV4OctetFalseTest() {
 		String regex = ipV4Octet();
@@ -79,6 +81,7 @@ class StringsTest {
 		assertFalse("1000".matches(regex));
 		assertFalse("300".matches(regex));
 	}
+
 	@Test
 	void ipV4TrueTest() {
 		String regex = ipV4Address();
@@ -87,6 +90,7 @@ class StringsTest {
 		assertTrue("000.0.0.0".matches(regex));
 		assertTrue("255.255.255.255".matches(regex));
 	}
+
 	@Test
 	void ipV4TFalseTest() {
 		String regex = ipV4Address();
@@ -95,6 +99,30 @@ class StringsTest {
 		assertFalse("12.3.".matches(regex));
 		assertFalse("100".matches(regex));
 		assertFalse("1 2.3.4".matches(regex));
+	}
+
+	@Test
+	void arithmeticExpressionTrueTest() {
+		String regex = arithmeticExpression();
+		
+		assertTrue("1.5 + a/2*10 -21".matches(regex));
+		assertTrue(" .5 + $/2* 10.0 /21.1234".matches(regex));
+		assertTrue("5. + __/2* 0.0 /0 ".matches(regex));
+		assertTrue("25.".matches(regex));
+		assertTrue(" aA123 ".matches(regex));
+	}
+
+
+	@Test
+	void arithmeticExpressionFalseTest() {
+		String regex = arithmeticExpression();
+
+		assertFalse("1.5 # a/2*10 -21".matches(regex));
+		assertFalse(".5 + $ 1/2* 10.0 /21.1234".matches(regex));
+		assertFalse("5. + _/2* 0.0 /0".matches(regex));
+		assertFalse("25 .".matches(regex));
+		assertFalse("aA123*".matches(regex));
+		assertFalse(" + a * b".matches(regex));
 	}
 
 }

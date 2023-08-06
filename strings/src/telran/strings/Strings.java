@@ -1,7 +1,7 @@
 package telran.strings;
 
 public class Strings {
-	
+
 	static public String javaVariable() {
 		
 		return "[a-zA-Z$][\\w$]*|_[\\w$]+";
@@ -22,5 +22,24 @@ public class Strings {
 		
 		String octet = ipV4Octet();
 		return String.format("%1$s(\\.%1$s){3}", octet);
+	}
+	
+	
+	static public String arithmeticExpression() {
+		String operand = operand();
+		String operator = operator();
+	
+		return String.format("^%1$s(%2$s%1$s)*$", operand, operator);
+	}
+	
+	public static String operand() {
+		String regex = javaVariable();
+		
+		return String.format(" *(\\d+(\\.{1}\\d*)?|\\d*(\\.\\d*)+|%s) *", regex);
+	}
+	
+	
+	public static String operator() {
+		return "[+-/*]";
 	}
 }
