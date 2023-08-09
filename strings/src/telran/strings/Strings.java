@@ -29,17 +29,17 @@ public class Strings {
 		String operand = operand();
 		String operator = operator();
 	
-		return String.format("^%1$s(%2$s%1$s)*$", operand, operator);
+		return String.format("%1$s(%2$s%1$s)*", operand, operator);
 	}
 	
 	public static String operand() {
 		String regex = javaVariable();
 		
-		return String.format(" *(\\d+(\\.{1}\\d*)?|\\d*(\\.\\d*)+|%s) *", regex);
+		return String.format("\\s*(\\d+(\\.\\d*)?|\\d*(\\.\\d*)+|%s)\\s*", regex);
 	}
 	
 	
 	public static String operator() {
-		return "[+-/*]";
+		return "[+/*-]";
 	}
 }

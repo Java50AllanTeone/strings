@@ -110,6 +110,7 @@ class StringsTest {
 		assertTrue("5. + __/2* 0.0 /0 ".matches(regex));
 		assertTrue("25.".matches(regex));
 		assertTrue(" aA123 ".matches(regex));
+		assertTrue("123 - 456".matches(regex));
 	}
 
 
