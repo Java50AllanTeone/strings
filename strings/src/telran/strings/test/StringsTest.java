@@ -3,6 +3,9 @@ package telran.strings.test;
 import static org.junit.jupiter.api.Assertions.*;
 import static telran.strings.Strings.*;
 
+import  java.util.Map;
+import  java.util.HashMap;
+
 import org.junit.jupiter.api.Test;
 
 class StringsTest {
@@ -139,6 +142,34 @@ class StringsTest {
 		assertFalse(isArithmeticExpression("(a + ((b /2)  * 100)- 10 )))"));
 		assertFalse(isArithmeticExpression("(a + ((b)))) /2)  * 100)- ((10 ))"));
 		assertFalse(isArithmeticExpression(" a) + ( (b /2 )  * 100  )- 10)"));
+	}
+	
+	@Test 
+	void calculationTrueTest() {
+		Map<String, Double> map = new HashMap<>();
+		map.put("abc", 3d);
+		assertEquals(3, calculation("1+2", map));
+		assertEquals(6, calculation("1+2+3", map));
+		assertEquals(1, calculation("1", map));
+		assertEquals(2, calculation("1+1", map));
+		assertEquals(2, calculation(" 1 + 1   ", map));
+		assertEquals(2, calculation("(1+1)", map));		
+		assertEquals(2, calculation("(1)+(1)", map));	
+		assertEquals(0, calculation("1+2-3", map));
+		assertEquals(2, calculation("1-2+3", map));	
+		assertEquals(4, calculation("1 + abc", map));
+		assertEquals(4, calculation("abc + 1", map));
+		assertEquals(6, calculation("abc + abc", map));
+	}
+	
+	@Test 
+	void calculationFalseTest() {
+		Map<String, Double> map = new HashMap<>();
+		map.put("abc", 3d);
+		
+		assertThrowsExactly(IllegalArgumentException.class, () -> calculation("abc", null));
+		assertThrowsExactly(IllegalArgumentException.class, () -> calculation("abcd", map));
+		assertThrowsExactly(IllegalArgumentException.class, () -> calculation("1(+)2", map));
 	}
 
 }
