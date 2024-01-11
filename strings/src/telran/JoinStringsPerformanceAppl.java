@@ -17,19 +17,21 @@ public class JoinStringsPerformanceAppl {
 	static final int N_RUNS = 10000;
 	private static final String PATH = "telran.text.";
 
-	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+	public static void main(String[] args) {
 		var arr = getBigArray();
 		PerformanceTest[] tests = new PerformanceTest[args.length];
 
 		for (int i = 0; i < tests.length; i++) {
-			Class<JoinStrings> clazz = (Class<JoinStrings>) Class.forName(PATH + args[i]);
-			Constructor<JoinStrings> constructor = clazz.getConstructor();
-			JoinStrings str = constructor.newInstance();
-
-			tests[i] = new JoinStringsPerformanceTest(str.getClass().getSimpleName(), N_RUNS, arr, str);
-			tests[i].run();
+			try {
+				Class<JoinStrings> clazz = (Class<JoinStrings>) Class.forName(PATH + args[i]);
+				Constructor<JoinStrings> constructor = clazz.getConstructor();
+				JoinStrings str = constructor.newInstance();
+				tests[i] = new JoinStringsPerformanceTest(str.getClass().getSimpleName(), N_RUNS, arr, str);
+				tests[i].run();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
 		}
-
 	}
 
 
